@@ -18,6 +18,9 @@ class Window:
         self.root.mainloop()
 
     def draw_widgets(self):
+        frame_for_pictures = Frame(self.root, width=580, height=200)
+        frame_for_pictures.place(relx=0.5, rely=0.6, anchor=CENTER)
+
         Label(self.root, text="There should be a title here!", relief=RAISED, border='5',
               font='TimesNewRoman 20',
               ).place(relx=0.5, rely=0.1, anchor=CENTER)
@@ -30,8 +33,8 @@ class Window:
               font='TimesNewRoman 15', height=2, width=20
               ).place(relx=0.7, rely=0.23, anchor=CENTER)
 
-        Label(self.root, image=self.picture1).place(relx=0.3, rely=0.6, anchor=CENTER)
-        Label(self.root, image=self.picture2).place(relx=0.73, rely=0.6, anchor=CENTER)
+        Label(frame_for_pictures, image=self.picture1).place(bordermode=INSIDE, relx=0, rely=0)
+        Label(frame_for_pictures, image=self.picture2).place(bordermode=INSIDE, relx=0.5, rely=0)
 
 
 if __name__ == "__main__":
