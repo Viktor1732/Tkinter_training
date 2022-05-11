@@ -10,8 +10,8 @@ class Window:
             self.root.iconbitmap(icon)
         self.root.resizable(False, False)
 
-        self.picture1 = PhotoImage(file=r"C:\Users\vkryz\Desktop\tkinter_training\resources\picture1.png")
-        self.picture2 = PhotoImage(file=r"C:\Users\vkryz\Desktop\tkinter_training\resources\picture2.png")
+        self.picture1 = PhotoImage(file=r"picture1.png")
+        self.picture2 = PhotoImage(file=r"picture2.png")
 
     def run(self):
         self.draw_widgets()
@@ -40,6 +40,6 @@ class Window:
 if __name__ == "__main__":
     window = Window(
         "It's the main window!", 600, 400,
-        r"C:\Users\vkryz\Desktop\tkinter_training\resources\iconka.ico"
+        r"iconka.ico"
     )
     window.run()

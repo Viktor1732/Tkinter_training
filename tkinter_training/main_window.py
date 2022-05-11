@@ -10,10 +10,10 @@ class Window:
         if icon is not None:
             self.root.iconbitmap(icon)
 
-        self.picture1 = PhotoImage(file=r"C:\Users\vkryz\Desktop\tkinter_training\resources\picture1.png")
-        self.picture2 = PhotoImage(file=r"C:\Users\vkryz\Desktop\tkinter_training\resources\picture2.png")
-        self.picture3 = PhotoImage(file=r"C:\Users\vkryz\Desktop\tkinter_training\resources\picture3.png")
-        self.picture4 = PhotoImage(file=r"C:\Users\vkryz\Desktop\tkinter_training\resources\picture4.png")
+        self.picture1 = PhotoImage(file=r"picture1.png")
+        self.picture2 = PhotoImage(file=r"picture2.png")
+        self.picture3 = PhotoImage(file=r"picture3.png")
+        self.picture4 = PhotoImage(file=r"picture4.png")
 
     def run(self):
         self.draw_widgets()
@@ -51,10 +51,10 @@ class Window:
 if __name__ == "__main__":
     window = Window(
         "It's the main window!", 600, 580,
-        r"C:\Users\vkryz\Desktop\tkinter_training\resources\iconka.ico"
+        r"iconka.ico"
     )
 #    window.create_front_window(
 #         "It's the front window!", 400, 200,
-#         r"C:\Users\vkryz\Desktop\tkinter_training\resources\iconka.ico"
+#         r"iconka.ico"
 #    )
     window.run()
