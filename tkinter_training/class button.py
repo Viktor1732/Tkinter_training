@@ -1,4 +1,6 @@
 from tkinter import *
+from PIL import Image as PilImage
+from PIL import ImageTk
 
 
 class Window:
@@ -25,6 +27,8 @@ class Window:
         Button(self.root, width=30, height=5, text="Button 2", bg="#2B2BFF", borderwidth="5",
                activebackground="black", activeforeground="white", command=lambda: self.change_color("blue")
                ).grid(column=0, row=0, sticky=NE, padx=15, pady=15)
+        Button(self.root, text="Close", height=5, width=30, relief=RAISED, border="5",
+               command=quit).grid(column=0, row=0)
 
     def change_color(self, color):
         self.label.configure(bg=color)
