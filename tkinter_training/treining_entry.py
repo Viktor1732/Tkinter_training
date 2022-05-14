@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox as mb
 
 
 class Window:
@@ -9,7 +9,6 @@ class Window:
         self.root.geometry(f"{width}x{height}+50+50")
         if icon is not None:
             self.root.iconbitmap(icon)
-
         self.entry = Entry(self.root)
 
     def run(self):
@@ -17,16 +16,22 @@ class Window:
         self.root.mainloop()
 
     def draw_widgets(self):
+        self.entry.configure(bg="pink", justify=CENTER, width=20)
         self.entry.pack()
-        Button(self.root, width=10, command=self.get_text, text="Show text!").pack()
 
-        text_var = StringVar(value="Text")
-        Entry(self.root, bg="pink", font=("TimesNewRoman", 15), relief=SUNKEN, justify=CENTER,
-              selectbackground="green", textvariable=text_var).pack()
+        str_var_button = StringVar(value="OK")
+        Button(self.root, width=20, textvariable=str_var_button, command=self.get_enter).pack()
 
-    def get_text(self):
+        Button(self.root, text="Close", command=self.exit).pack()
+
+    def get_enter(self):
         text = self.entry.get()
-        messagebox.showinfo("Entry text", text)
+        mb.showinfo("Entry text", text)
+
+    def exit(self):
+        choice = mb.askyesno("QUIT", "Do you want to quit?")
+        if choice is True:
+            self.root.destroy()
 
 
 if __name__ == "__main__":
