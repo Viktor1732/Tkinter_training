@@ -1,14 +1,16 @@
 from tkinter import *
-from PIL import Image as PilImage
-from PIL import ImageTk
+
+
+# from PIL import Image as PilImage
+# from PIL import ImageTk
 
 # from tkinter import messagebox as mb
 
 
-RED = 0
-YELLOW = 1
-GREEN = 2
-ORANGE = 3
+# RED = 0
+# YELLOW = 1
+# GREEN = 2
+# ORANGE = 3
 
 
 class Window:
@@ -17,25 +19,48 @@ class Window:
         self.root.title(title)
         if icon is not None:
             self.root.iconbitmap(icon)
+
         self.choice = IntVar(value=0)
+        self.place = Label(self.root)
 
-        img = PilImage.open("picture3.png")
-        img = img.resize((30, 20), PilImage.ANTIALIAS)
-        self.photo_image = ImageTk.PhotoImage(img)
-
-        img2 = PilImage.open("picture2.png")
-        img2 = img2.resize((30, 20), PilImage.ANTIALIAS)
-        self.photo_image2 = ImageTk.PhotoImage(img2)
+        # img = PilImage.open("picture3.png")
+        # img = img.resize((30, 20), PilImage.ANTIALIAS)
+        # self.photo_image = ImageTk.PhotoImage(img)
+        #
+        # img2 = PilImage.open("picture2.png")
+        # img2 = img2.resize((30, 20), PilImage.ANTIALIAS)
+        # self.photo_image2 = ImageTk.PhotoImage(img2)
 
     def run(self):
         self.draw_widgets()
         self.root.mainloop()
 
     def draw_widgets(self):
-        Radiobutton(self.root, text="RED", value=0, variable=self.choice, command=self.change_bg).pack(pady=10, padx=10)
-        Radiobutton(self.root, text="YELLOW", value=1, variable=self.choice, command=self.change_bg).pack(pady=10, padx=10)
-        Radiobutton(self.root, text="GREEN", value=2, variable=self.choice, command=self.change_bg).pack(pady=10, padx=10)
-        Radiobutton(self.root, text="ORANGE", value=3, variable=self.choice, command=self.change_bg).pack(pady=10, padx=10)
+        self.place.pack()
+
+        Radiobutton(self.root, text="Ocean", value=0, variable=self.choice,
+                    command=lambda: self.save("ocean")).pack(pady=10, padx=10)
+        Radiobutton(self.root, text="Forest", value=1, variable=self.choice,
+                    command=lambda: self.save("forest")).pack(pady=10, padx=10)
+        Radiobutton(self.root, text="?", value=2, variable=self.choice,
+                    command=lambda: self.save("?")).pack(pady=10, padx=10)
+
+    def save(self, place):
+        if place == "ocean":
+            self.place.configure(text="Океан - свежее и красивое место. С чистой водой.", bg="blue")
+        if place == "forest":
+            self.place.configure(text="Лес - красивое и прохладное место. Повсюду запах хвои.", bg="green")
+        if place == "?":
+            self.place.configure(text="Я незнаю что это за место", bg="brown")
+
+        # Radiobutton(self.root, text="RED", value=0, variable=self.choice,
+        # command=self.change_bg, indicatoron=False).pack(pady=10, padx=10)
+        # Radiobutton(self.root, text="YELLOW", value=1, variable=self.choice,
+        # command=self.change_bg, indicatoron=False).pack(pady=10, padx=10)
+        # Radiobutton(self.root, text="GREEN", value=2, variable=self.choice,
+        # command=self.change_bg).pack(pady=10, padx=10)
+        # Radiobutton(self.root, text="ORANGE", value=3, variable=self.choice,
+        # command=self.change_bg).pack(pady=10, padx=10)
 
         # Radiobutton(self.root, text="Text nuber one", variable=self.choice, value=0,
         #             bg="pink", image=self.photo_image, justify=CENTER, compound=LEFT).pack(pady=10, padx=10)
@@ -45,16 +70,16 @@ class Window:
         #             relief=SUNKEN, borderwidth=5, justify=CENTER).pack(pady=10, padx=10)
         # Button(self.root, text="Show info", command=self.save).pack()
 
-    def change_bg(self):
-        choice = self.choice.get()
-        if choice == 0:
-            self.root.configure(bg="red")
-        if choice == 1:
-            self.root.configure(bg="yellow")
-        if choice == 2:
-            self.root.configure(bg="green")
-        if choice == 3:
-            self.root.configure(bg="orange")
+    # def change_bg(self):
+    #     choice = self.choice.get()
+    #     if choice == 0:
+    #         self.root.configure(bg="red")
+    #     if choice == 1:
+    #         self.root.configure(bg="yellow")
+    #     if choice == 2:
+    #         self.root.configure(bg="green")
+    #     if choice == 3:
+    #         self.root.configure(bg="orange")
 
     # def save(self):
     #     choice = self.choice.get()
