@@ -11,6 +11,7 @@ class Window:
             self.root.iconbitmap(icon)
         self.root.resizable(True, True)
         self.root.geometry("350x200")
+        self.root.configure(bg="crimson")
 
         self.set_colors = Combobox(self.root, values=("crimson", "light blue", "yellow"), state="readonly")
 
@@ -23,11 +24,12 @@ class Window:
 
         self.set_colors.current(0)
         self.set_colors.pack(pady=15)
+        self.set_colors.bind("<<ComboboxSelected>>", self.change_background)
 
-        Button(self.root, text="OK", width=20, command=self.change_background).pack(pady=10)
+        Button(self.root, text="Info color", width=20, command=self.info_colors).pack(pady=10)
         Button(self.root, text="Close", width=20, command=self.exit).pack()
 
-    def change_background(self):
+    def change_background(self, event):
         value = self.set_colors.get()
 
         if value == "crimson":
@@ -36,6 +38,12 @@ class Window:
             self.root.configure(bg="light blue")
         if value == "yellow":
             self.root.configure(bg="yellow")
+
+    def info_colors(self):
+        index = self.set_colors.current()
+        value = self.set_colors.get()
+
+        mb.showinfo("info", f"Index color: {index}\nValue color: {value}")
 
     def exit(self):
         choice = mb.askyesno("Quit", "Do you want quit?")
