@@ -30,19 +30,18 @@ class Window:
         setting_file_menu = Menu(file_menu, tearoff=False)
         file_menu.add_cascade(menu=setting_file_menu, label="Setting")
 
-        change_color_setting_file_menu = Menu(setting_file_menu, tearoff=False)
-
-        change_color_setting_file_menu.add_radiobutton(
+        change_color_menu = Menu(setting_file_menu, tearoff=False)
+        change_color_menu.add_radiobutton(
             label="red", value=0, variable=self.color_font, command=self.change_color
         )
-        change_color_setting_file_menu.add_radiobutton(
+        change_color_menu.add_radiobutton(
             label="green", value=1, variable=self.color_font, command=self.change_color
         )
-        change_color_setting_file_menu.add_radiobutton(
+        change_color_menu.add_radiobutton(
             label="yellow", value=2, variable=self.color_font, command=self.change_color
         )
-        setting_file_menu.add_cascade(menu=change_color_setting_file_menu, label="Change color")
 
+        setting_file_menu.add_cascade(menu=change_color_menu, label="Change color")
         file_menu.add_separator()
         file_menu.add_command(label="Close")
         menu_bar.add_cascade(menu=file_menu, label="File")
@@ -54,12 +53,12 @@ class Window:
         menu_bar.add_cascade(menu=edit_menu, label="Edit")
 
         view_menu = Menu(menu_bar, tearoff=False)
-        tool_window_menu = Menu(view_menu, tearoff=False)
-        tool_window_menu.add_command(label="Commit")
-        tool_window_menu.add_command(label="Project")
-        tool_window_menu.add_command(label="Find")
+        windows_menu = Menu(view_menu, tearoff=False)
+        windows_menu.add_command(label="Commit")
+        windows_menu.add_command(label="Project")
+        windows_menu.add_command(label="Find")
 
-        view_menu.add_cascade(menu=tool_window_menu, label="Tool Window")
+        view_menu.add_cascade(menu=windows_menu, label="Tool Window")
         view_menu.add_command(label="Appearance")
         view_menu.add_separator()
         view_menu.add_command(label="Quick Definition")
